@@ -1,0 +1,22 @@
+{
+  "name": "debanshu-protfolio-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/debanshu78/debanshu-protfolio-backend.git"
+  },
+  "author": "Debanshu Rout",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/debanshu78/debanshu-protfolio-backend/issues"
+  },
+  "homepage": "https://github.com/debanshu78/debanshu-protfolio-backend#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
