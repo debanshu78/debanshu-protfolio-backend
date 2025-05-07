@@ -1,0 +1,140 @@
+Summarized Features:
+1.Users can fill out testimonials.
+2.Admins can approve or reject testimonials.
+3.Emails are sent to users when testimonials are approved or rejected.
+4.Users can upvote skills but must provide basic details like email (verification required).
+5.Users can send anonymous feedback or feedback after logging in.
+6.sign in and sign up functionality.
+
+Collections and Fields:
+Users
+    profilePic: String
+    name: String
+    currentPosition: String
+    company: String
+    email: String (unique, required)
+    phone: String
+    password: String (hashed)
+    socialLinks: Object
+        github: String
+        linkedIn: String
+        twitter: String
+        instagram: String
+    testimonials: Array of ObjectId (references Testimonials)
+    upvoteSkills: Array of ObjectId (references Skills)
+    role: String (e.g., "admin", "user")
+    createdAt: Date
+    updatedAt: Date
+
+    Service function required:
+        - signUp
+        - signIn
+        - updateProfile
+        - getUserById
+        - getAllUsers
+        - deleteUser
+        - getUserTestimonialsByEmail 
+        - updateUserRole (admin only)
+        - updateUpvoteSkills
+    
+    api endpoints required:
+        - /api/users/signup
+        - /api/users/signin
+        - /api/users/updateProfile
+        - /api/users/getUserById
+        - /api/users/getAllUsers
+        - /api/users/deleteUser
+        - /api/users/getUserTestimonialsByEmail
+        - /api/users/updateUserRole
+        - /api/users/updateUpvoteSkills
+    
+
+Testimonials
+    _id: ObjectId
+    user: ObjectId (references Users)
+    testimonialTitleMessage: String
+    testimonialFullMessage: String
+    testimonialDate: Date
+    status: String (e.g., "approved", "rejected")
+
+    Service function required:
+        - createTestimonial
+        - getAllTestimonials
+        - getTestimonialById
+        - updateTestimonialStatus (admin only)
+        - deleteTestimonial
+    
+    api endpoints required:
+        - /api/testimonials/create
+        - /api/testimonials/getAll
+        - /api/testimonials/getById
+        - /api/testimonials/updateStatus
+        - /api/testimonials/delete
+           
+
+Skills
+    _id: ObjectId
+    name: String
+    description: String
+    category: String
+    projectLink: String
+    skillUpvotes: Array of Objects
+            userId: ObjectId (references Users)
+    upvoteDate: Date
+    skillLastUsedDate: Date
+    yearOfExperience: Number
+
+    Service function required:
+        - createSkill
+        - getAllSkills
+        - updateSkill
+        - deleteSkill
+        - upvoteSkill (requires user authentication)
+    
+    api endpoints required:
+        - /api/skills/create
+        - /api/skills/getAll
+        - /api/skills/update
+        - /api/skills/delete
+        - /api/skills/upvote
+
+Feedback
+    _id: ObjectId
+    user: ObjectId (references Users, nullable for anonymous feedback)
+    feedbackMessage: String
+    feedbackDate: Date
+    anonymous: Boolean
+    feedbackType: String (e.g., "general", "bug report", "feature request")
+
+    Service function required:
+        - createFeedback
+        - getAllFeedback
+        - getFeedbackById
+        - deleteFeedback
+
+    api endpoints required:
+        - /api/feedback/create
+        - /api/feedback/getAll
+        - /api/feedback/getById
+
+Extra Service Functions required
+    - sendEmail (for sending approval/rejection emails)
+    - verifyEmail (for email verification during sign-up)
+    - generateToken (for JWT authentication)
+    - hashPassword (for password hashing)
+    - comparePassword (for password comparison)
+    - uploadProfilePic (for uploading user profile pictures)
+    - validateTestimonial (for validating testimonial content)
+
+Relationships:
+Users ↔ Testimonials: One-to-One
+A user can submit one testimonials.
+
+Users ↔ Skills: Many-to-Many
+Users can upvote multiple skills, and each skill can have multiple upvotes from different users.
+
+Users ↔ Feedback: One-to-Many
+A user can submit multiple feedback entries. Feedback can also be anonymous.
+
+Skills ↔ Upvotes: Embedded
+Upvotes for skills are stored as an array of objects within the Skills collection.
