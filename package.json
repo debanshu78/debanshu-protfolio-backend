@@ -17,6 +17,7 @@
   "homepage": "https://github.com/debanshu78/debanshu-protfolio-backend#readme",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^5.1.0"
   }
 }
