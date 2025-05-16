@@ -117,6 +117,69 @@ Feedback
         - /api/feedback/getAll
         - /api/feedback/getById
 
+
+
+
+User Endpoints
+    POST   /api/users/signup
+        Body: { name, email, password, ... }
+    POST   /api/users/signin
+        Body: { email, password }
+    PUT    /api/users/updateProfile
+        Body: { name, profilePic, ... } (requires authentication)
+    GET    /api/users/getUserById/:id
+        Params: id (user id)
+    GET    /api/users/getAllUsers
+        Query: (optional filters, pagination)
+    DELETE /api/users/deleteUser/:id
+        Params: id (user id, admin only)
+    GET    /api/users/getUserTestimonialsByEmail/:email
+        Params: email
+    PUT    /api/users/updateUserRole/:id
+        Params: id (user id)
+        Body: { role } (admin only)
+    PUT    /api/users/updateUpvoteSkills
+        Body: { skillId } (requires authentication)
+Testimonial Endpoints
+    POST   /api/testimonials/create
+        Body: { testimonialTitleMessage, testimonialFullMessage } (requires     authentication)
+    GET    /api/testimonials/getAll
+        Query: (optional filters, pagination)
+    GET    /api/testimonials/getById/:id
+        Params: id (testimonial id)
+    PUT    /api/testimonials/updateStatus/:id
+        Params: id (testimonial id)
+        Body: { status } (admin only)
+    DELETE /api/testimonials/delete/:id
+        Params: id (testimonial id, admin only)
+Skill Endpoints
+    POST   /api/skills/create
+        Body: { name, description, category, ... } (admin only)
+    GET    /api/skills/getAll
+        Query: (optional filters, pagination)
+    PUT    /api/skills/update/:id
+        Params: id (skill id)
+        Body: { ...fieldsToUpdate } (admin only)
+    DELETE /api/skills/delete/:id
+        Params: id (skill id, admin only)
+    POST   /api/skills/upvote
+        Body: { skillId } (requires authentication)
+Feedback Endpoints
+    POST   /api/feedback/create
+        Body: { feedbackMessage, anonymous, feedbackType } (user id optional for    anonymous)
+    GET    /api/feedback/getAll
+        Query: (optional filters, pagination)
+    GET    /api/feedback/getById/:id
+        Params: id (feedback id)
+
+Note:
+Use :id or :email in the route for path params.
+Use Body for POST/PUT data.
+Use Query for filters, pagination, etc.
+Endpoints requiring authentication or admin access should be protected by middleware.
+Let me know if you want a more detailed OpenAPI/Swagger-style specification!
+
+
 Extra Service Functions required
     - sendEmail (for sending approval/rejection emails)
     - verifyEmail (for email verification during sign-up)
