@@ -138,3 +138,57 @@ A user can submit multiple feedback entries. Feedback can also be anonymous.
 
 Skills ↔ Upvotes: Embedded
 Upvotes for skills are stored as an array of objects within the Skills collection.
+
+
+
+debanshu-protfolio-backend/
+│
+├── src/
+│   ├── config/                # Configuration files (db, passport, env, etc.)
+│   │   ├── db.js
+│   │   ├── passport.js
+│   │   └── email.js
+│   │
+│   ├── controllers/           # Request handlers for each resource
+│   │   ├── user.controller.js
+│   │   ├── testimonial.controller.js
+│   │   ├── skill.controller.js
+│   │   └── feedback.controller.js
+│   │
+│   ├── models/                # Mongoose schemas
+│   │   ├── user.model.js
+│   │   ├── testimonial.model.js
+│   │   ├── skill.model.js
+│   │   └── feedback.model.js
+│   │
+│   ├── routes/                # Express route definitions
+│   │   ├── user.routes.js         # /api/users/*
+│   │   ├── testimonial.routes.js  # /api/testimonials/*
+│   │   ├── skill.routes.js        # /api/skills/*
+│   │   └── feedback.routes.js     # /api/feedback/*
+│   │
+│   ├── services/              # Business logic, helpers
+│   │   ├── user.service.js
+│   │   ├── testimonial.service.js
+│   │   ├── skill.service.js
+│   │   ├── feedback.service.js
+│   │   ├── email.service.js
+│   │   └── auth.service.js        # JWT, password hashing, etc.
+│   │
+│   ├── middlewares/           # Custom middleware (auth, validation, error handling)
+│   │   ├── auth.middleware.js
+│   │   ├── role.middleware.js
+│   │   └── validate.middleware.js
+│   │
+│   ├── utils/                 # Utility functions (token, upload, etc.)
+│   │   ├── token.util.js
+│   │   ├── upload.util.js
+│   │   └── validator.util.js
+│   │
+│   ├── app.js                 # Express app setup
+│   └── server.js              # Entry point
+│
+├── .env
+├── .gitignore
+├── package.json
+└── README.md

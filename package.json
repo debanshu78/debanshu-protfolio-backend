@@ -18,6 +18,8 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "npm": "^11.4.0",
+    "swagger-ui-express": "^5.0.1"
   }
 }
