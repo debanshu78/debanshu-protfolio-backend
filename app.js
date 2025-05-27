@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./config/db.js";
+import "./config/passport.js";
 import authRouter from "./routes/auth.routes.js"; // Import the auth routes
 
 const app = express();

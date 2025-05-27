@@ -6,7 +6,13 @@ export const signUp = async ({ name, email, password, ...rest }) => {
   const existing = await User.findOne({ email });
   if (existing) throw new Error("User already exists");
   const hashed = await bcrypt.hash(password, 10);
-  const user = await User.create({ name, email, password: hashed, ...rest });
+  const user = await User.create({
+    name,
+    email,
+    password: hashed,
+    accountstatus: "active",
+    ...rest,
+  });
   return user;
 };
 

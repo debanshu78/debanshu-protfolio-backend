@@ -2,11 +2,12 @@ import { Router } from "express";
 import passport from "passport";
 import * as userController from "../controllers/user.controller.js";
 import * as otpController from "../controllers/otp.controller.js";
+import { validateSignUp } from "../middlewares/validate.middleware.js";
 
 const router = Router();
 
 // Local sign up
-router.post("/signup", userController.signUp);
+router.post("/signup",validateSignUp, userController.signUp);
 
 // Local sign in
 router.post(
