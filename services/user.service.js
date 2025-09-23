@@ -43,3 +43,7 @@ export const findOrCreateSocialUser = async ({
   }
   return user;
 };
+
+export const getUserById = async (id) => {
+  return await User.findById(id).select("-password");
+};

@@ -2,6 +2,7 @@ import * as otpService from "../services/otp.service.js";
 
 export const requestOTP = async (req, res) => {
   const { email } = req.body;
+   console.log(`EMAIL for ${email}`);
   try {
     const otp = await otpService.sendOTP(email);
     if (otp) {
