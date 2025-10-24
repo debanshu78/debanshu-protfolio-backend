@@ -18,6 +18,6 @@ echo "--- End Debugging ---"
 
 # We'll exit successfully for now so you can see the debug output.
 # We will uncomment the actual command later.
-# npm run precommit-check
+npm run precommit-check
 
 exit 0 # Exit successfully to let Git commit and show debug output
