@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
-import { Schema, model } from "mongoose";
+import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
 const feedbackSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
     },
     aliasName: {
       type: String,
@@ -20,7 +20,7 @@ const feedbackSchema = new Schema(
     feedbackType: {
       type: String,
       required: true,
-      enum: ["bug", "feature", "other"],
+      enum: ['bug', 'feature', 'other'],
     },
     ananomyous: {
       type: Boolean,
@@ -30,5 +30,5 @@ const feedbackSchema = new Schema(
   { timestamps: true }
 );
 
-const Feedback = mongoose.model("Feedback", feedbackSchema);
+const Feedback = mongoose.model('Feedback', feedbackSchema);
 export default Feedback;

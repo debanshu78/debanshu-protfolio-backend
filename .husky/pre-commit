@@ -1,0 +1,23 @@
+#!/bin/sh
+# This line ensures nvm is sourced if it's installed via a standard method
+# and not already sourced in the shell running the hook.
+# Adjust path if your nvm.sh is in a different location.
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+echo "--- Debugging Husky Environment ---"
+echo "PATH: $PATH"
+echo "NVM_DIR: $NVM_DIR"
+echo "which node: $(which node)"
+echo "node -v: $(node -v)"
+echo "which npm: $(which npm)"
+echo "npm -v: $(npm -v)"
+echo "which npx: $(which npx)"
+echo "--- End Debugging ---"
+
+# We'll exit successfully for now so you can see the debug output.
+# We will uncomment the actual command later.
+# npm run precommit-check
+
+exit 0 # Exit successfully to let Git commit and show debug output

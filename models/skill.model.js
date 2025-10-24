@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from 'mongoose';
 
 const skillSchema = new Schema({
   name: {
@@ -26,7 +25,13 @@ const skillSchema = new Schema({
     type: Number,
     default: 0,
   },
-  skillLastUsed: {
+  skillUpvotes: [
+    {
+      userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+      upvoteDate: { type: Date, default: Date.now },
+    },
+  ],
+  skillLastUsedDate: {
     type: Date,
     default: Date.now,
   },
@@ -35,5 +40,6 @@ const skillSchema = new Schema({
     required: true,
   },
 });
-const Skill = model("Skill", skillSchema);
+
+const Skill = model('Skill', skillSchema);
 export default Skill;

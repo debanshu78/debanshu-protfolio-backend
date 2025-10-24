@@ -1,5 +1,5 @@
-import User from "../models/user.model.js";
-import bcrypt from "bcryptjs";
+import User from '../models/user.model.js';
+import bcrypt from 'bcryptjs';
 // import your email utility here
 
 // In-memory store for OTPs (replace with Redis in future)
@@ -31,19 +31,15 @@ export const verifyOTP = async (email, otp) => {
   // Debug logs
   const record = otpStore.get(email);
   console.log(`Verifying OTP for ${email}:`);
-  console.log("Submitted OTP:", otp);
-  console.log("Stored OTP record:", record);
+  console.log('Submitted OTP:', otp);
+  console.log('Stored OTP record:', record);
 
-  if (
-    record &&
-    (await bcrypt.compare(otp, record.otp)) &&
-    record.otpExpires > Date.now()
-  ) {
+  if (record && (await bcrypt.compare(otp, record.otp)) && record.otpExpires > Date.now()) {
     otpStore.delete(email); // Remove OTP after successful verification
-    console.log("OTP verified successfully.");
+    console.log('OTP verified successfully.');
     return true;
   }
-  console.log("OTP verification failed.");
+  console.log('OTP verification failed.');
   return false;
 };
 

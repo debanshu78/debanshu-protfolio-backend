@@ -1,4 +1,4 @@
-import mongoose, { Types } from "mongoose";
+import mongoose, { Types } from 'mongoose';
 const { Schema } = mongoose;
 
 const userSchema = new Schema(
@@ -18,21 +18,21 @@ const userSchema = new Schema(
       twitter: { type: String },
       instagram: { type: String },
     },
-    testimonials: [{ type: Types.ObjectId, ref: "Testimonial" }],
-    upvoteSkills: [{ type: Types.ObjectId, ref: "Skill" }],
+    testimonials: [{ type: Types.ObjectId, ref: 'Testimonial' }],
+    upvoteSkills: [{ type: Types.ObjectId, ref: 'Skill' }],
     accountstatus: {
       type: String,
-      default: "deactive",
-      enum: ["deactive", "active", "reset"],
+      default: 'deactive',
+      enum: ['deactive', 'active', 'reset'],
     },
     role: {
       type: String,
-      default: "user",
-      enum: ["user", "admin", "super-admin"],
+      default: 'user',
+      enum: ['user', 'admin', 'super-admin'],
     },
   },
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 export default User;
