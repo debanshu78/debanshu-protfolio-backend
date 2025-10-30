@@ -6,6 +6,7 @@ import './config/passport.js'
 import authRouter from './routes/auth.routes.js' // Import the auth routes
 import userRouter from './routes/user.routes.js' // Import the user routes
 import skillRouter from './routes/skill.routes.js' // Import the skill routes
+import testimonialRouter from './routes/testimonials.routes.js' // Import the testimonial routes
 
 const app = express()
 
@@ -32,5 +33,6 @@ app.get('/health', (req, res) => {
 app.use(`/api/${version}/auth`, authRouter)
 app.use(`/api/${version}/user`, userRouter) // Use authRouter for user routes as well
 app.use(`/api/${version}/skills`, skillRouter)
+app.use(`/api/${version}/testimonials`, testimonialRouter)
 
 export default app
