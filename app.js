@@ -1,34 +1,38 @@
-import express from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import { connectDB } from "./config/db.js";
-import "./config/passport.js";
-import authRouter from "./routes/auth.routes.js"; // Import the auth routes
-import userRouter from "./routes/user.routes.js"; // Import the user routes
+import express from 'express'
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import { connectDB } from './config/db.js'
+import './config/passport.js'
+import authRouter from './routes/auth.routes.js' // Import the auth routes
+import userRouter from './routes/user.routes.js' // Import the user routes
+import skillRouter from './routes/skill.routes.js' // Import the skill routes
+import testimonialRouter from './routes/testimonials.routes.js' // Import the testimonial routes
 
-const app = express();
+const app = express()
 
 // Database connection
-connectDB();
+connectDB()
 
-const version = process.env.API_VERSION || "v1"; // API version
+const version = process.env.API_VERSION || 'v1' // API version
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
-    credentials: true, // Allow cookies to be sent
+    origin: 'http://localhost:5173',
+    credentials: true,
   }),
-);
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+)
+app.use(cookieParser())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.get("/health", (req, res) => {
-  res.send("API is healthy");
-});
+app.get('/health', (req, res) => {
+  res.send('API is healthy')
+})
 
 // Routes
-app.use(`/api/${version}/auth`, authRouter);
-app.use(`/api/${version}/user`, userRouter);
+app.use(`/api/${version}/auth`, authRouter)
+app.use(`/api/${version}/user`, userRouter) // Use authRouter for user routes as well
+app.use(`/api/${version}/skills`, skillRouter)
+app.use(`/api/${version}/testimonials`, testimonialRouter)
 
-export default app;
+export default app

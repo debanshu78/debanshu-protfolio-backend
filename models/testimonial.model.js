@@ -1,11 +1,11 @@
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
 const testimonialSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: 'User',
       required: true,
     },
     shortMessage: {
@@ -20,8 +20,8 @@ const testimonialSchema = new Schema(
     },
     status: {
       type: String,
-      default: "pending",
-      enum: ["pending", "approved", "rejected"],
+      default: 'pending',
+      enum: ['pending', 'approved', 'rejected'],
     },
     statusInfo: {
       type: String,
@@ -30,5 +30,5 @@ const testimonialSchema = new Schema(
   { timestamps: true }
 );
 
-const Testimonial = mongoose.model("Testimonial", testimonialSchema);
+const Testimonial = mongoose.model('Testimonial', testimonialSchema);
 export default Testimonial;
