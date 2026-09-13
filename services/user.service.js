@@ -43,3 +43,8 @@ export const findOrCreateSocialUser = async ({
   }
   return user;
 };
+
+// Service to get user by ID (for /me route)
+export const getUserById = async (id) => {
+  return await User.findById(id).select("-password");
+};

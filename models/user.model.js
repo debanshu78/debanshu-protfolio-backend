@@ -7,7 +7,7 @@ const userSchema = new Schema(
     currentPosition: { type: String, trim: true },
     company: { type: String, trim: true },
     email: { type: String, required: true, unique: true, trim: true },
-    phone: { type: String, trim: true, unique: true },
+    phone: { type: String, trim: true, unique: true, sparse: true },
     password: { type: String }, // Hashed password for local login
     otp: { type: String },
     otpExpires: { type: Date },
